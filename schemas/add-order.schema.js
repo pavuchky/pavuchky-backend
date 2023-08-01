@@ -11,7 +11,7 @@ const OrderSchema = Joi.object({
         'string.max': '"name" length must be less than or equal to {#limit} characters long',
         'any.required': '"name" is required',
     }),
-    comment: Joi.string().required().min(0).max(1000).messages({
+    comment: Joi.string().min(0).max(1000).messages({
         "string.min": `"name" should have a minimum length of {#limit}`,
         "string.max": `"name" should have a maximum length of {#limit}`,
     }),
