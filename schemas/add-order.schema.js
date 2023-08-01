@@ -12,8 +12,8 @@ const OrderSchema = Joi.object({
         'any.required': '"name" is required',
     }),
     comment: Joi.string().min(0).max(1000).messages({
-        "string.min": `"name" should have a minimum length of {#limit}`,
-        "string.max": `"name" should have a maximum length of {#limit}`,
+        "string.min": `"comment" should have a minimum length of {#limit}`,
+        "string.max": `"comment" should have a maximum length of {#limit}`,
     }),
     phone: Joi.string().trim().required().regex(PHONE_REGEXP).messages({
         'string.base': '"phone" must be a string',

@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 const orderRouter = require('./routers/order/index');
+const partnerRouter = require('./routers/partner/index');
 const { errorHandlingMiddleware } = require("./middlewares/error-handling.middleware");
 
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/order", orderRouter);
+app.use("/partners", partnerRouter);
 
 app.use(errorHandlingMiddleware);
 
