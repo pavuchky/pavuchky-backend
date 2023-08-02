@@ -24,5 +24,4 @@ module.exports = {
     BASE_TYPE,
     MATERIAL_TYPE,
     LOOPSCHECKBOX,
-
 };

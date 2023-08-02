@@ -3,6 +3,7 @@ const logger = require("morgan");
 const cors = require("cors");
 const orderRouter = require('./routers/order/index');
 const partnerRouter = require('./routers/partner/index');
+const rewieRouter = require('./routers/rewies/index');
 const { errorHandlingMiddleware } = require("./middlewares/error-handling.middleware");
 
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.use("/order", orderRouter);
 app.use("/partners", partnerRouter);
+app.use("/rewie", rewieRouter);
 
 app.use(errorHandlingMiddleware);
 

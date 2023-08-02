@@ -1,7 +1,6 @@
-
 const UPLOAD_FILE_LIMIT_IN_BYTE = 3145728;
 
-const ALLOWED_FORMATS = ["jpg", "png", "svg", "webp"];
+const ALLOWED_FORMATS = ["jpg", "png", "webp"];
 
 const PHONE_REGEXP = /^\+380\d{9}$/;
 
