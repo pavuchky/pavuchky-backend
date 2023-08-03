@@ -34,9 +34,6 @@
           "description": "If the client does not send any order parameters, then it must send a file, otherwise it will receive a 400 error. If the client did not send order data, it will receive a response body without the order field.",
           "required": true,
           "content": {
-            "multipart/form-data": {
-              "schema": { "$ref": "#/components/schemas/CreateOrderRequest" }
-            },
             "application/json": {
               "schema": { "$ref": "#/components/schemas/CreateOrderRequest" }
             }
@@ -150,7 +147,7 @@
           "phone": {
             "type": "string",
             "example": "+380950000000",
-            "description": "Must match this format"
+            "description": "Must match this format +380950000000 or +38095 000 00 00"
           },
           "position": {
             "type": "string",
@@ -169,22 +166,22 @@
             "example": "8х4м"
           },
           "typeBase": {
-            "type": "array",
-            "example": ["plastic", "kapron", "пластик", "капрон"],
-            "description": "Must be an array of one of type base from the list: plastic, kapron, пластик, капрон"
+            "type": "string",
+            "example": "plastic",
+            "description": "Must be a string of one of type base from the list: plastic, kapron, пластик, капрон"
           },
           "material": {
-            "type": "array",
-            "example": ["cotton", "spunbond", "бавовна", "спанбонд"],
-            "description": "Must be an array of one of material from the list: cotton, spunbond, бавовна, спанбонд"
+            "type": "string",
+            "example": "cotton",
+            "description": "Must be a string of one of material from the list: cotton, spunbond, бавовна, спанбонд"
           },
           "color": {
             "type": "string",
             "example": "30% green 70% dry grass"
           },
           "loops": {
-            "type": "array",
-            "example": ["yes", "no", "так", "ні"],
+            "type": "string",
+            "example": "yes",
             "description": "Must be an array of one choise from the list: yes, no, так, ні"
           }
         }
@@ -200,7 +197,7 @@
           "phone": {
             "type": "string",
             "example": "+380950000000",
-            "description": "Must match this format"
+            "description": "Must match this format +380950000000 or +38095 000 00 00"
           },
           "position": {
             "type": "string",
@@ -219,21 +216,21 @@
             "example": "8х4м"
           },
           "typeBase": {
-            "type": "array",
+            "type": "string",
             "example": "plastic",
-            "description": "Must be an array of one of type base from the list: plastic, kapron, пластик, капрон"
+            "description": "Must be a string of one of type base from the list: plastic, kapron, пластик, капрон"
           },
           "material": {
-            "type": "array",
+            "type": "string",
             "example": "cotton",
-            "description": "Must be an array of one of material from the list: cotton, spunbond, бавовна, спанбонд"
+            "description": "Must be a string of one of material from the list: cotton, spunbond, бавовна, спанбонд"
           },
           "color": {
             "type": "string",
             "example": "30% green 70% dry grass"
           },
           "loops": {
-            "type": "array",
+            "type": "string",
             "example": "yes",
             "description": "Must be an array of one choise from the list: yes, no, так, ні"
           }
@@ -241,7 +238,7 @@
       },
       "CreatePartnerRequest": {
         "type": "object",
-        "required": ["name", "company", "email", "phone", "comment"],
+        "required": ["name", "company", "email", "phone"],
         "properties": {
           "name": {
             "type": "string",
@@ -258,7 +255,7 @@
           "phone": {
             "type": "string",
             "example": "+380950000000",
-            "description": "Must match this format"
+            "description": "Must match this format +380950000000 or +38095 000 00 00"
           },
           "comment": {
             "type": "string",
@@ -268,7 +265,7 @@
       },
       "CreatePartnerResponse": {
         "type": "object",
-        "required": ["name", "company", "email", "phone", "comment"],
+        "required": ["name", "company", "email", "phone"],
         "properties": {
           "name": {
             "type": "string",
@@ -285,7 +282,7 @@
           "phone": {
             "type": "string",
             "example": "+380950000000",
-            "description": "Must match this format"
+            "description": "Must match this format +380950000000 or +38095 000 00 00"
           },
           "comment": {
             "type": "string",
