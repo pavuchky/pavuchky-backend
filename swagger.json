@@ -1,0 +1,351 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "1.0.0",
+    "title": "Pavuchky backend"
+  },
+  "consumers": ["multipart/form-data"],
+  "producers": ["application/json"],
+  "servers": [
+    { "url": "https://pavuchky-backend.onrender.com" },
+    { "url": "https://localhost:3002" }
+  ],
+  "tags": [
+    {
+      "name": "Add Order",
+      "description": "Order endpoints"
+    },
+    {
+      "name": "Add Partner",
+      "description": "Partner endpoints"
+    },
+    {
+      "name": "Add Rewie",
+      "description": "Rewie endpoints"
+    }
+  ],
+  "paths": {
+    "/order": {
+      "post": {
+        "tags": ["Add Order"],
+        "summary": "Add Order creation",
+        "parameters": [],
+        "requestBody": {
+          "description": "If the client does not send any order parameters, then it must send a file, otherwise it will receive a 400 error. If the client did not send order data, it will receive a response body without the order field.",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": { "$ref": "#/components/schemas/CreateOrderRequest" }
+            },
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateOrderRequest" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Order sent successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CreateOrderResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "A required field is probably missing or invalid data transmitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/partners": {
+      "post": {
+        "tags": ["Add Partner"],
+        "summary": "Add Partner creation",
+        "parameters": [],
+        "requestBody": {
+          "description": "Partner data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreatePartnerRequest" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Partner request sent successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CreatePartnerResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "A required field is probably missing or invalid data transmitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rewie": {
+      "post": {
+        "tags": ["Add Rewie"],
+        "summary": "Add Rewie creation",
+        "parameters": [],
+        "requestBody": {
+          "description": "Rewie data",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": { "$ref": "#/components/schemas/CreateRewieRequest" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Rewie sent successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CreateRewieResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "A required field is probably missing or invalid data transmitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateOrderRequest": {
+        "type": "object",
+        "required": ["name", "phone", "position", "militaryUnit", "gridSize", "typeBase", "material", "color", "loops"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "phone": {
+            "type": "string",
+            "example": "+380950000000",
+            "description": "Must match this format"
+          },
+          "position": {
+            "type": "string",
+            "example": "Lieutenant"
+          },
+          "militaryUnit": {
+            "type": "string",
+            "example": "582 team"
+          },
+          "comment": {
+            "type": "string",
+            "example": "Here is a comment about the order"
+          },
+          "gridSize": {
+            "type": "string",
+            "example": "8х4м"
+          },
+          "typeBase": {
+            "type": "array",
+            "example": ["plastic", "kapron", "пластик", "капрон"],
+            "description": "Must be an array of one of type base from the list: plastic, kapron, пластик, капрон"
+          },
+          "material": {
+            "type": "array",
+            "example": ["cotton", "spunbond", "бавовна", "спанбонд"],
+            "description": "Must be an array of one of material from the list: cotton, spunbond, бавовна, спанбонд"
+          },
+          "color": {
+            "type": "string",
+            "example": "30% green 70% dry grass"
+          },
+          "loops": {
+            "type": "array",
+            "example": ["yes", "no", "так", "ні"],
+            "description": "Must be an array of one choise from the list: yes, no, так, ні"
+          }
+        }
+      },
+      "CreateOrderResponse": {
+        "type": "object",
+        "required": ["name", "phone", "position", "militaryUnit", "gridSize", "typeBase", "material", "color", "loops"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "phone": {
+            "type": "string",
+            "example": "+380950000000",
+            "description": "Must match this format"
+          },
+          "position": {
+            "type": "string",
+            "example": "Lieutenant"
+          },
+          "militaryUnit": {
+            "type": "string",
+            "example": "582 team"
+          },
+          "comment": {
+            "type": "string",
+            "example": "Here is a comment about the order"
+          },
+          "gridSize": {
+            "type": "string",
+            "example": "8х4м"
+          },
+          "typeBase": {
+            "type": "array",
+            "example": "plastic",
+            "description": "Must be an array of one of type base from the list: plastic, kapron, пластик, капрон"
+          },
+          "material": {
+            "type": "array",
+            "example": "cotton",
+            "description": "Must be an array of one of material from the list: cotton, spunbond, бавовна, спанбонд"
+          },
+          "color": {
+            "type": "string",
+            "example": "30% green 70% dry grass"
+          },
+          "loops": {
+            "type": "array",
+            "example": "yes",
+            "description": "Must be an array of one choise from the list: yes, no, так, ні"
+          }
+        }
+      },
+      "CreatePartnerRequest": {
+        "type": "object",
+        "required": ["name", "company", "email", "phone", "comment"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "company": {
+            "type": "string",
+            "example": "ACME Corp"
+          },
+          "email": {
+            "type": "string",
+            "example": "john.doe@example.com"
+          },
+          "phone": {
+            "type": "string",
+            "example": "+380950000000",
+            "description": "Must match this format"
+          },
+          "comment": {
+            "type": "string",
+            "example": "Here is a comment about the partner"
+          }
+        }
+      },
+      "CreatePartnerResponse": {
+        "type": "object",
+        "required": ["name", "company", "email", "phone", "comment"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "company": {
+            "type": "string",
+            "example": "ACME Corp"
+          },
+          "email": {
+            "type": "string",
+            "example": "john.doe@example.com"
+          },
+          "phone": {
+            "type": "string",
+            "example": "+380950000000",
+            "description": "Must match this format"
+          },
+          "comment": {
+            "type": "string",
+            "example": "Here is a comment about the partner"
+          }
+        }
+      },
+      "CreateRewieRequest": {
+        "type": "object",
+        "required": ["name", "email", "comment"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "example": "john.doe@example.com"
+          },
+          "comment": {
+            "type": "string",
+            "example": "Here is a comment about the rewiew"
+          },
+          "photo": {
+            "type": "string",
+            "example": "binary"
+          }
+        }
+      },
+      "CreateRewieResponse": {
+        "type": "object",
+        "required": ["name", "email", "comment"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "example": "john.doe@example.com"
+          },
+          "comment": {
+            "type": "string",
+            "example": "Here is a comment about the rewiew"
+          },
+          "photo": {
+            "type": "string",
+            "example": "https://res.cloudinary.com/dsadwasuq9/image/upload/v16210340/rewies/abcd1234efgh5678.jpg"
+          }
+        }
+      },
+      "BadRequestResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "\"name\" is required"
+          }
+        }
+      }
+    }
+  }
+}

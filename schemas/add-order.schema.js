@@ -40,11 +40,13 @@ const OrderSchema = Joi.object({
         'string.base': '"typeBase" must be a string',
         'string.empty': '"typeBase" is not allowed to be empty',
         'any.required': '"typeBase" is required',
+        'any.only': '" typeBase" must be one of the allowed values : plastic, kapron, пластик, капрон',
     }),
     material: Joi.string().valid(...Object.values(MATERIAL_TYPE)).required().messages({
         'string.base': '"material" must be a string',
         'string.empty': '"material" is not allowed to be empty',
         'any.required': '"material" is required',
+        'any.only': '" material" must be one of the allowed values : cotton, spunbond, бавовна, спанбонд',
     }),
     color: Joi.string().trim().required().messages({
         'string.base': '"color" must be a string',
@@ -55,7 +57,7 @@ const OrderSchema = Joi.object({
         'string.base': '"loops" must be a string',
         'string.empty': '"loops" is not allowed to be empty',
         'any.required': '"loops" is required',
-        'any.only': '"loops" must be one of the allowed values',
+        'any.only': '"loops" must be one of the allowed values : yes, no, так, ні',
     }),
 });
 
