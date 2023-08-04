@@ -33,28 +33,59 @@ const addPartner = async (req, res, next) => {
     }
 
     const html = `
+    <div style="width: 100%; background-color: #f3f9ff; padding: 5rem 0">
+  <div style="max-width: 700px; background-color: white; margin: 0 auto;">
+    <div style="width: 100%; background-color: #0069B5; padding: 20px 0;">
+      <div style="width: 120px; height: 70px; background-color: #ffffff; padding: 20px 0; overflow: hidden; border-radius: 50%; margin: 0 auto;">
+       
+          <img src="https://res.cloudinary.com/dsw7lnmcv/image/upload/v1691065540/nnaikmeerbn4qmyjz4fo.png"
+               style="width: 120px; height: 100%; object-fit: contain; margin: 0 auto;"
+               alt="Circle Image"
+          />
+        
+      </div>
+    </div>
     <p style="font-family: Courier New">
+    <span style=" font-size: 18px; font-weight: bold">
       Інформація про партнера:
+      </span>
       <br />
       <br />
 
-      ПІБ: ${name}
+      <span style=" font-size: 14px; font-weight: bold">
+      ПІБ:
+      </span>
+       ${name}
       <br />
      
-     Чим займаються: ${company}
+      <span style=" font-size: 14px; font-weight: bold">
+     Чим займаються:
+     </span>
+      ${company}
       <br />
      
-      E-mail: ${email}
+      <span style=" font-size: 14px; font-weight: bold">
+      E-mail:
+      </span>
+       ${email}
       <br />
 
-      Номер телефону: ${phone}
+      <span style=" font-size: 14px; font-weight: bold">
+      Номер телефону:
+      </span>
+       ${phone}
       <br />
 
-      Додаткові коментарі: ${comment}
+      <span style=" font-size: 14px; font-weight: bold">
+      Додаткові коментарі:
+      </span>
+       ${comment}
       <br />
       
       <br />
     </p>
+    </div>
+   </div>
   `;
 
     const data = {

@@ -42,43 +42,89 @@ const addOrder = async (req, res, next) => {
     }
 
     const html = `
+    <div style="width: 100%; background-color: #f3f9ff; padding: 5rem 0">
+  <div style="max-width: 700px; background-color: white; margin: 0 auto;">
+    <div style="width: 100%; background-color: #0069B5; padding: 20px 0;">
+      <div style="width: 120px; height: 70px; background-color: #ffffff; padding: 20px 0; overflow: hidden; border-radius: 50%; margin: 0 auto;">
+       
+          <img src="https://res.cloudinary.com/dsw7lnmcv/image/upload/v1691065540/sahaqasvyjjmhip2eapu.png"
+               style="width: 120px; height: 60px; object-fit: contain; margin: 0 auto;"
+               alt="Circle Image"
+          />
+        
+      </div>
+    </div>
     <p style="font-family: Courier New">
+     <span style=" font-size: 18px; font-weight: bold">
       Інформація про замовлення:
+      </span>
       <br />
       <br />
 
-      ПІБ: ${name}
+      <span style=" font-size: 14px; font-weight: bold">
+      ПІБ:
+       </span>
+       ${name}
+      <br />
+
+      <span style=" font-size: 14px; font-weight: bold">
+      Посада:
+      </span>
+       ${position}
       <br />
      
-      Посада: ${position}
-      <br />
-     
-      Номер військової частини або бригади: ${militaryUnit}
-      <br />
-
-      Номер телефону: ${phone}
+       <span style=" font-size: 14px; font-weight: bold">
+      Номер військової частини або бригади:
+      </span>
+       ${militaryUnit}
       <br />
 
-      Додаткові коментарі: ${comment}
+      <span style=" font-size: 14px; font-weight: bold">
+      Номер телефону:
+      </span>
+       ${phone}
       <br />
 
-      Розмір сітки: ${gridSize}
+      <span style=" font-size: 14px; font-weight: bold">
+      Додаткові коментарі:
+      </span>
+       ${comment}
       <br />
 
-      Вид основи: ${typeBase}
+      <span style=" font-size: 14px; font-weight: bold">
+      Розмір сітки:
+      </span>
+       ${gridSize}
       <br />
 
-      Матеріал: ${material}
+      <span style=" font-size: 14px; font-weight: bold">
+      Вид основи:
+      </span>
+       ${typeBase}
       <br />
 
-      Колір сітки: ${color}
+       <span style=" font-size: 14px; font-weight: bold">
+      Матеріал:
+       </span>
+        ${material}
       <br />
 
-      Петлі для кріплення: ${loops}
+       <span style=" font-size: 14px; font-weight: bold">
+      Колір сітки:
+      </span>
+       ${color}
+      <br />
+
+      <span style=" font-size: 14px; font-weight: bold">
+      Петлі для кріплення:
+      </span>
+       ${loops}
       <br />
       
       <br />
     </p>
+      </div>
+   </div>
   `;
 
     const data = {
