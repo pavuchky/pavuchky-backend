@@ -62,7 +62,7 @@ const addRewies = async (req, res, next) => {
       <br />
 
       <br />
-      ${photo ? `<img src="${photo}" alt="Rewie Photo">` : ""}
+      ${photo ? `<img src="${photo}"  style="max-width: 100%;" alt="Rewie Photo">` : ""}
       
       <br />
     </p>
