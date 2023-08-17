@@ -8,40 +8,40 @@ dotenv.config();
 const { WORK_EMAIL } = process.env;
 
 const addOrder = async (req, res, next) => {
-    const {
-        name,
-        phone,
-        position,
-        comment,
-        militaryUnit,
-        gridSize,
-        typeBase,
-        material,
-        color,
-        loops,
-    } = req.body;
+  const {
+    name,
+    phone,
+    position,
+    comment,
+    militaryUnit,
+    gridSize,
+    typeBase,
+    material,
+    color,
+    loops,
+  } = req.body;
 
-    const { error, value } = OrderSchema.validate({
-        name,
-        phone,
-        position,
-        comment,
-        militaryUnit,
-        gridSize,
-        typeBase,
-        material,
-        color,
-        loops,
-    });
-    if (error) {
-        const invalidField = error.details[0].path[0];
-        throw createHttpException(
-            400,
-            `Missing or not valid field ${invalidField} => ${error.message}`
-        );
-    }
+  const { error, value } = OrderSchema.validate({
+    name,
+    phone,
+    position,
+    comment,
+    militaryUnit,
+    gridSize,
+    typeBase,
+    material,
+    color,
+    loops,
+  });
+  if (error) {
+    const invalidField = error.details[0].path[0];
+    throw createHttpException(
+      400,
+      `Missing or not valid field ${invalidField} => ${error.message}`
+    );
+  }
 
-    const html = `
+  const html = `
     <div style="width: 100%; background-color: #f3f9ff; padding: 5rem 0">
   <div style="max-width: 700px; background-color: white; margin: 0 auto;">
     <div style="width: 100%; background-color: #0069B5; padding: 20px 0;">
@@ -67,17 +67,21 @@ const addOrder = async (req, res, next) => {
        ${name}
       <br />
 
+       ${position ? `
       <span style=" font-size: 14px; font-weight: bold">
       Посада:
       </span>
        ${position}
       <br />
-     
-       <span style=" font-size: 14px; font-weight: bold">
+      ` : ''}
+      
+      ${militaryUnit ? `
+      <span style=" font-size: 14px; font-weight: bold">
       Номер військової частини або бригади:
       </span>
        ${militaryUnit}
       <br />
+      ` : ''}
 
       <span style=" font-size: 14px; font-weight: bold">
       Номер телефону:
@@ -85,11 +89,13 @@ const addOrder = async (req, res, next) => {
        ${phone}
       <br />
 
+      ${comment ? `
       <span style=" font-size: 14px; font-weight: bold">
       Додаткові коментарі:
       </span>
        ${comment}
       <br />
+      ` : ''}
 
       <span style=" font-size: 14px; font-weight: bold">
       Розмір сітки:
@@ -127,16 +133,16 @@ const addOrder = async (req, res, next) => {
    </div>
   `;
 
-    const data = {
-        to: WORK_EMAIL,
-        subject: "Order received",
-        html,
-    };
+  const data = {
+    to: WORK_EMAIL,
+    subject: "Order received",
+    html,
+  };
 
-    sendEmail(data);
-    res.status(201).json({ message: "Order sent successfully" });
+  sendEmail(data);
+  res.status(201).json({ message: "Order sent successfully" });
 };
 
 module.exports = {
-    addOrder,
+  addOrder,
 };

@@ -76,11 +76,13 @@ const addPartner = async (req, res, next) => {
        ${phone}
       <br />
 
+      ${comment ? `
       <span style=" font-size: 14px; font-weight: bold">
       Додаткові коментарі:
       </span>
        ${comment}
       <br />
+      ` : ''}
       
       <br />
     </p>
