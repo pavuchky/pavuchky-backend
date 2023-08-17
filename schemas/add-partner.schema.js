@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { PHONE_REGEXP, EMAIL_REGEXP } = require('../utils/index');
+const { PHONE_REGEXP_PARTNER, EMAIL_REGEXP } = require('../utils/index');
 
 
 
@@ -15,7 +15,7 @@ const PartnerSchema = Joi.object({
         "string.min": `"comment" should have a minimum length of {#limit}`,
         "string.max": `"comment" should have a maximum length of {#limit}`,
     }),
-    phone: Joi.string().trim().required().regex(PHONE_REGEXP).messages({
+    phone: Joi.string().trim().required().regex(PHONE_REGEXP_PARTNER).messages({
         'string.base': '"phone" must be a string',
         'string.empty': '"phone" is not allowed to be empty',
         'any.required': '"phone" is required',

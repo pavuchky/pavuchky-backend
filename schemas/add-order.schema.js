@@ -21,15 +21,11 @@ const OrderSchema = Joi.object({
         'any.required': '"phone" is required',
         'string.pattern.base': '"phone" must be a valid phone number',
     }),
-    position: Joi.string().trim().required().messages({
+    position: Joi.string().trim().allow("").messages({
         'string.base': '"position" must be a string',
-        'string.empty': '"position" is not allowed to be empty',
-        'any.required': '"position" is required',
     }),
-    militaryUnit: Joi.string().trim().required().messages({
+    militaryUnit: Joi.string().trim().allow("").messages({
         'string.base': '"militaryUnit" must be a string',
-        'string.empty': '"militaryUnit" is not allowed to be empty',
-        'any.required': '"militaryUnit" is required',
     }),
     gridSize: Joi.string().trim().required().messages({
         'string.base': '"gridSize" must be a string',
