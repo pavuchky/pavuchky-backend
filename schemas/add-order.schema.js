@@ -36,7 +36,7 @@ const OrderSchema = Joi.object({
         'string.base': '"typeBase" must be a string',
         'string.empty': '"typeBase" is not allowed to be empty',
         'any.required': '"typeBase" is required',
-        'any.only': '" typeBase" must be one of the allowed values : plastic, kapron, пластик, капрон',
+        'any.only': '" typeBase" must be one of the allowed values : plastic, nylon, пластик, капрон',
     }),
     material: Joi.string().valid(...Object.values(MATERIAL_TYPE)).required().messages({
         'string.base': '"material" must be a string',

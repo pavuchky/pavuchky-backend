@@ -1,7 +1,7 @@
 const BASE_TYPE = {
     PLASTIC_ENG: "plastic",
     PLASTIC_UKR: "пластик",
-    KAPRON_ENG: "kapron",
+    KAPRON_ENG: "nylon",
     KAPRON_UKR: "капрон"
 };
 
