@@ -4,7 +4,7 @@ const { LOOPSCHECKBOX, BASE_TYPE, MATERIAL_TYPE } = require('../enums');
 
 
 const OrderSchema = Joi.object({
-    name: Joi.string().trim().min(3).max(30).required().messages({
+    name: Joi.string().trim().min(2).max(30).required().messages({
         'string.base': '"name" must be a string',
         'string.empty': '"name" is not allowed to be empty',
         'string.min': '"name" length must be at least {#limit} characters long',
